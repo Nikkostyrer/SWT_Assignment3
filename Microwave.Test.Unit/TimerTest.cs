@@ -72,10 +72,10 @@ namespace Microwave.Test.Unit
             uut.Expired += (sender, args) => pause.Set();
             uut.TimerTick += (sender, args) => notifications++;
 
-            uut.Start(2000);
+            uut.Start(2); // <- Changed from 2000 to 2.
 
             // wait longer than expiration
-            Assert.That(pause.WaitOne(2100));
+            Assert.That(pause.WaitOne(3)); // <- Changed from 2100 to 3.
 
             Assert.That(notifications, Is.EqualTo(2));
         }
