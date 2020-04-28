@@ -53,6 +53,7 @@ namespace Microwave.Test.Integration
             light.Received(1).TurnOn();
 
             // Check that light is neither turned on or off when door is open.
+            light.ClearReceivedCalls();
             door.Open();
             light.DidNotReceive().TurnOn();
             light.DidNotReceive().TurnOff();
@@ -62,6 +63,7 @@ namespace Microwave.Test.Integration
             light.Received(1).TurnOff();
 
             // Try and re-close the door.
+            light.ClearReceivedCalls();
             door.Close();
             light.DidNotReceive().TurnOff();
             light.DidNotReceive().TurnOn();
@@ -115,9 +117,11 @@ namespace Microwave.Test.Integration
             display.Received(1).ShowPower(700);
 
             // Increasing power level beyond 700 makes it roll over.
+            display.ClearReceivedCalls();
             powerButton.Press();
             display.Received(1).ShowPower(50);
 
+            display.ClearReceivedCalls();
             // Closing door.
             door.Close();
             // Does nothing.
@@ -149,6 +153,7 @@ namespace Microwave.Test.Integration
             display.Received(1).ShowTime(1, 0);
 
             // Pressing powerButton in SETTIME should do nothing.
+            display.ClearReceivedCalls();
             powerButton.Press();
             display.DidNotReceive().ShowTime(Arg.Any<int>(), Arg.Any<int>());
 
@@ -157,6 +162,7 @@ namespace Microwave.Test.Integration
             display.Received(1).ShowTime(2, 0);
 
             // Closing the door in this state does nothing.
+            display.ClearReceivedCalls();
             door.Close();
             display.DidNotReceive().ShowTime(Arg.Any<int>(), Arg.Any<int>());
 
@@ -185,6 +191,7 @@ namespace Microwave.Test.Integration
             cookController.Received(1).StartCooking(50, 60);
 
             // Opening door.
+            light.ClearReceivedCalls();
             door.Open();
             // Stops the cooking.
             cookController.Received(1).Stop();
