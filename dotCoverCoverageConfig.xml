@@ -9,6 +9,18 @@
   <InheritConsole><!-- [True|False] Lets the application being analysed to inherit dotCover console. True by default. --> </InheritConsole>
   
   <Filters>
+    <IncludeFilters>
+    </IncludeFilters>
+    <ExcludeFilters>
+      <FilterEntry>
+        <ModuleMask>nunit.framework</ModuleMask>
+        <ClassMask>*</ClassMask>
+        <FunctionMask>*</FunctionMask>
+      </FilterEntry>
+    </ExcludeFilters>
+  </Filters>
+  <!--
+  <Filters>
     <ExcludeFilters>
       <FilterEntry>
         <ModuleMask>MicrowaveOvenClasses</ModuleMask>
