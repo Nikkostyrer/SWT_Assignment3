@@ -8,6 +8,5 @@ namespace MicrowaveOvenClasses.Boundary
         {
             System.Console.WriteLine(line);
         }
-        
     }
 }
