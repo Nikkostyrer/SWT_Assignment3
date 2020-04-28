@@ -34,6 +34,7 @@
       </FilterEntry>
     </ExcludeFilters>
   </Filters>
+    -->
   <!-- Coverage filters. It's possible to use asterisks as wildcard symbols.
     <IncludeFilters>
       <FilterEntry>
