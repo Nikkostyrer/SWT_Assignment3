@@ -4,11 +4,11 @@
   <TargetArguments>bin\Debug\Microwave.Test.Unit.dll --result:TestResult.xml</TargetArguments>
   <TargetWorkingDir>Microwave.Test.Unit</TargetWorkingDir>
   <TempDir><!-- Directory for the auxiliary files. Set to system temp by default. --></TempDir>
-  <Output>coverage_report.html</Output>
+  <Output>coverage_report_unit.html</Output>
   <ReportType>HTML<!-- [HTML|JSON|XML|NDependXML]. A type of the report. XML by default. --></ReportType>
   <InheritConsole><!-- [True|False] Lets the application being analysed to inherit dotCover console. True by default. --> </InheritConsole>
   
-  <Filters>
+  <!-- <Filters>
     <IncludeFilters>
     </IncludeFilters>
     <ExcludeFilters>
@@ -18,7 +18,7 @@
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
     </ExcludeFilters>
-  </Filters>
+  </Filters> -->
   <!--
   <Filters>
     <ExcludeFilters>

@@ -51,9 +51,9 @@ namespace Microwave.Test.Integration
             // Check that light received TurnOn.
             door.Open();
             light.Received(1).TurnOn();
+            light.ClearReceivedCalls();
 
             // Check that light is neither turned on or off when door is open.
-            light.ClearReceivedCalls();
             door.Open();
             light.DidNotReceive().TurnOn();
             light.DidNotReceive().TurnOff();
@@ -61,9 +61,9 @@ namespace Microwave.Test.Integration
             // Close the door.
             door.Close();
             light.Received(1).TurnOff();
+            light.ClearReceivedCalls();
 
             // Try and re-close the door.
-            light.ClearReceivedCalls();
             door.Close();
             light.DidNotReceive().TurnOff();
             light.DidNotReceive().TurnOn();
@@ -75,6 +75,7 @@ namespace Microwave.Test.Integration
             // Pressing power button shows power level.
             powerButton.Press();
             display.Received(1).ShowPower(50);
+            display.ClearReceivedCalls();
 
             // Increase power level by 50.
             powerButton.Press();
@@ -117,11 +118,10 @@ namespace Microwave.Test.Integration
             display.Received(1).ShowPower(700);
 
             // Increasing power level beyond 700 makes it roll over.
-            display.ClearReceivedCalls();
             powerButton.Press();
             display.Received(1).ShowPower(50);
-
             display.ClearReceivedCalls();
+
             // Closing door.
             door.Close();
             // Does nothing.
@@ -151,18 +151,18 @@ namespace Microwave.Test.Integration
             timeButton.Press();
             // And ShowTime should be called in display.
             display.Received(1).ShowTime(1, 0);
+            display.ClearReceivedCalls();
 
             // Pressing powerButton in SETTIME should do nothing.
-            display.ClearReceivedCalls();
             powerButton.Press();
             display.DidNotReceive().ShowTime(Arg.Any<int>(), Arg.Any<int>());
 
             // Pressing timeButton should increase time.
             timeButton.Press();
             display.Received(1).ShowTime(2, 0);
+            display.ClearReceivedCalls();
 
             // Closing the door in this state does nothing.
-            display.ClearReceivedCalls();
             door.Close();
             display.DidNotReceive().ShowTime(Arg.Any<int>(), Arg.Any<int>());
 
@@ -187,11 +187,11 @@ namespace Microwave.Test.Integration
             startCancelButton.Press();
             // Light should turn on.
             light.Received(1).TurnOn();
+            light.ClearReceivedCalls();
             // Should start cooking.
             cookController.Received(1).StartCooking(50, 60);
 
             // Opening door.
-            light.ClearReceivedCalls();
             door.Open();
             // Stops the cooking.
             cookController.Received(1).Stop();
