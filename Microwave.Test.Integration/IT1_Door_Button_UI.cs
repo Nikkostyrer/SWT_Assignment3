@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using NUnit.Framework;
 using MicrowaveOvenClasses.Controllers;
 using MicrowaveOvenClasses.Interfaces;
@@ -14,11 +14,11 @@ namespace Microwave.Test.Integration
         /**
          * Integration step connections under test.
          */
-        UserInterface ui;
-        Door door;
-        Button powerButton;
-        Button timeButton;
-        Button startCancelButton;
+        private UserInterface ui;
+        private Door door;
+        private Button powerButton;
+        private Button timeButton;
+        private Button startCancelButton;
 
         /**
          * Stubs for this integration step.
