@@ -40,7 +40,7 @@ namespace MicrowaveOvenClasses.Controllers
         public void StartCooking(int power, int time)
         {
             myPowerTube.TurnOn(power);
-            myTimer.Start(time);
+            myTimer.Start(time);// * 1000); // Added the multiplication of 1000 because a timer second = 1000 ticks.
             isCooking = true;
         }
 
